@@ -7,7 +7,7 @@ sequenceDiagram
     participant browser
     participant server
     
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_notet"
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note"
     activate server
 
     Note right of browser: The browser makes a POST request to the server. The request contains the details of the new note, e.g. { note: "New note" }.

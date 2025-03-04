@@ -20,18 +20,26 @@ sequenceDiagram
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
 
-    Note right of browser: The browser requests the page content and structure from the server (HTML code).
+    Note right of browser: The browser refreshes the /notes page by sending a GET request.
 
     server-->>browser: HTML document
     deactivate server
 
+    Note left of server: The server responds with an HTML document that defines the structure of the page.
+
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     activate server
+
+    Note right of browser: The browser requests a CSS file (main.css) to display the page layout correctly.
+
     server-->>browser: the css file
     deactivate server
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
     activate server
+
+    Note right of browser: The browser requests a JavaScript file (main.js) that is responsible for the functionality of the page.
+
     server-->>browser: the JavaScript file
     deactivate server
     

@@ -1,6 +1,6 @@
 # Osan 0 tehtävien vastaukset
 
-## 0.4: uusi muistiinpano
+## 0.4: Uusi muistiinpano
 
 ```mermaid
 sequenceDiagram

@@ -10,7 +10,7 @@ sequenceDiagram
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_notet"
     activate server
 
-    Note right of browser: The browser makes a POST request to the server. The request contains the details of the new note, e.g. { note: "test" }.
+    Note right of browser: The browser makes a POST request to the server. The request contains the details of the new note, e.g. { note: "New note" }.
 
     server-->>browser: Response: HTTP 302, Location: /notes, redirect to GET https://studies.cs.helsinki.fi/exampleapp/notes
     deactivate server
@@ -47,7 +47,7 @@ sequenceDiagram
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    server-->>browser: [{ "content": "test", "date": "2024-03-06T12:00:00.123Z" }, ... ]
+    server-->>browser: [{content: "New note", date: "2025-03-04T07:56:09.488Z"}, ... ]
     deactivate server    
 
     Note right of browser: The browser executes the callback function that renders the notes 

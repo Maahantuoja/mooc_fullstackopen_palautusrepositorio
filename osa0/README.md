@@ -10,7 +10,7 @@ sequenceDiagram
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note"
     activate server
 
-    Note right of browser: The browser makes a POST request to the server. The request contains the details of the new note, e.g. { note: "New note" }.
+    Note right of browser: The browser makes a POST request to the server. The request contains the details of the new note, e.g. {"note": "New note"}.
 
     server-->>browser: Response: HTTP 302, Location: /notes, redirect to GET https://studies.cs.helsinki.fi/exampleapp/notes
     deactivate server
@@ -47,7 +47,7 @@ sequenceDiagram
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    server-->>browser: [{content: "New note", date: "2025-03-04T07:56:09.488Z"}, ... ]
+    server-->>browser: [{ "content": "New note", date: "2025-03-04T07:56:09.488Z" }, ... ]
     deactivate server    
 
     Note right of browser: The browser executes the callback function that renders the notes 
@@ -97,4 +97,32 @@ sequenceDiagram
     deactivate server    
 
     Note right of browser: The browser processes the JSON response and dynamically renders the notes on the page without reloading.
+```
+
+## 0.6: Uusi muistiinpano
+
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+
+    Note right of browser: The browser sends a POST request to the server with the new note data in JSON format [{content: "New note", date: "2025-03-04T16:22:26.082Z"}].
+
+    server-->>browser: HTTP 201 Created
+    deactivate server
+
+    Note left of server: The server responds with HTTP 201 Created, indicating the note has been saved.
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+
+    Note right of browser: The browser fetches the updated list of notes from the server.
+
+    server-->>browser: JSON response [{ "content": "New note", "date": "2024-03-06T12:00:00.123Z" }, ... ]
+    deactivate server    
+
+    Note right of browser: The browser updates the UI dynamically, displaying the new note without reloading the page.
 ```

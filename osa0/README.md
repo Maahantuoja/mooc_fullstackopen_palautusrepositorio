@@ -73,7 +73,7 @@ sequenceDiagram
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     activate server
 
-    Note right of browser: The browser requests the CSS file to apply styles to the page.
+    Note right of browser: The browser requests a CSS file (main.css) to display the page layout correctly.
 
     server-->>browser: CSS file
     deactivate server

@@ -52,3 +52,49 @@ sequenceDiagram
 
     Note right of browser: The browser executes the callback function that renders the notes 
 ```
+
+## 0.5: Single Page App
+
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+
+    Note right of browser: The browser makes an GET request to the server to retrieve the HTML code of the page.
+
+    server-->>browser: HTML document
+    deactivate server
+
+    Note left of server: The server responds with an HTML document that defines the structure of the page.
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+
+    Note right of browser: The browser requests the CSS file to apply styles to the page.
+
+    server-->>browser: CSS file
+    deactivate server
+    
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    activate server
+
+    Note right of browser: The browser requests the JavaScript file (spa.js), which handles the application logic.
+
+    server-->>browser: JavaScript file
+    deactivate server
+
+    Note right of browser: The browser executes the JavaScript code, which fetches note data from the server asynchronously.
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+
+    Note right of browser: The JavaScript code sends a request to fetch all notes in JSON format.
+
+    server-->>browser: JSON response [{ "content": "example note", "date": "2024-03-06T12:00:00.123Z" }, ... ]
+    deactivate server    
+
+    Note right of browser: The browser processes the JSON response and dynamically renders the notes on the page without reloading.
+```

@@ -20,12 +20,12 @@ sequenceDiagram
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
 
-    Note right of browser: The browser follows the redirect and requests the updated /notes page.
+    Note right of browser: The browser follows the redirect by sending a GET request to /notes.
 
     server-->>browser: HTML document
     deactivate server
 
-    Note left of server: The server responds with an HTML document defining the page structure.
+    Note left of server: The server responds with an HTML document containing the page structure.
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     activate server
@@ -63,7 +63,7 @@ sequenceDiagram
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
     activate server
 
-    Note right of browser: The browser requests the SPA version of the notes application.
+    Note right of browser: The browser requests the Single Page App version of the notes application.
 
     server-->>browser: HTML document
     deactivate server

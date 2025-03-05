@@ -20,7 +20,7 @@ sequenceDiagram
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
 
-    Note right of browser: The browser follows the redirect by sending a GET request to /notes.
+    Note right of browser: The browser follows the redirect and requests the /notes page.
 
     server-->>browser: HTML document
     deactivate server
@@ -63,7 +63,7 @@ sequenceDiagram
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
     activate server
 
-    Note right of browser: The browser requests the Single Page App version of the notes application.
+    Note right of browser: The browser sends a GET request to retrieve the Single Page Application (SPA) version of the notes application.
 
     server-->>browser: HTML document
     deactivate server
@@ -91,7 +91,7 @@ sequenceDiagram
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
 
-    Note right of browser: The JavaScript code sends a request to fetch all notes in JSON format.
+    Note right of browser: The browser sends a request to fetch all notes in JSON format.
 
     server-->>browser: JSON response [{ "content": "example note", "date": "2024-03-06T12:00:00.123Z" }, ... ]
     deactivate server    
@@ -126,5 +126,5 @@ sequenceDiagram
     server-->>browser: JSON response [{ "content": "New note", "date": "2025-03-04T16:22:26.082Z" }, ... ]
     deactivate server    
 
-    Note right of browser: The browser updates the UI dynamically, displaying the new note without reloading the page.
+    Note right of browser: The browser dynamically updates the UI to display the new note without reloading the page.
 ```

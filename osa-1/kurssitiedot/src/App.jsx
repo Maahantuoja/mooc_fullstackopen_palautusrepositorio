@@ -1,25 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 
-const Header = (props) => {
-  return (
-    <>
-      <h1>
-        {props.text}
-      </h1>
-    </>
-  )
-}
+const Header = (props) => (
+  <h1>{props.text}</h1>
+)
 
-const Button = ({ onClick, text}) => {
-  return (
-    <>
-      <button onClick={onClick}>
-        {text}
-      </button>
-    </>
-  )
-}
+const Button = ({ onClick, text }) => (
+  <button onClick={onClick}>
+    {text}
+  </button>
+)
 
 const App = () => {
   const course = 'Give feedback'

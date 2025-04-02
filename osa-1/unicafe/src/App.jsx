@@ -11,6 +11,24 @@ const Button = ({ onClick, text }) => (
   </button>
 )
 
+const Statistics = (props) => {
+  if (props.all === 0) {
+    return (
+      <p>No feedback given</p>
+    )
+  }
+  return (
+    <p>
+      Good: {props.good}<br />
+      Neutral: {props.neutral}<br />
+      Bad: {props.bad}<br />
+      All: {props.all}<br />
+      Average: {props.average}<br />
+      Positive: {props.positive} %<br />
+    </p>
+  )
+}
+
 const App = () => {
   const course = 'Give feedback'
   const statistics = 'Statistics'
@@ -67,14 +85,14 @@ const App = () => {
 
       <Header text={statistics} />
 
-      <p>
-        Good: {good}<br />
-        Neutral: {neutral}<br />
-        Bad: {bad}<br />
-        All: {all}<br />
-        Average: {average}<br />
-        Positive: {positive} %<br />
-      </p>
+      <Statistics
+        good={good}
+        neutral={neutral}
+        bad={bad}
+        all={all}
+        average={average}
+        positive={positive}
+      />
     </>
   )
 }

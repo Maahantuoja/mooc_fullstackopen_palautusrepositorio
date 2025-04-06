@@ -8,24 +8,13 @@ const Button = ({ onClick, text }) => (
   </button>
 )
 
-const GetRandomInt = () => {
-  const getRandomInt = () => {
-    const max = 9
-
-    console.log(Math.floor(Math.random() * max))
-    // return Math.floor(Math.random() * max)
-  } 
+const Display = (props) => {
+  return <p>{props.anecdote}</p>
 }
+  
+  
 
 const App = () => {
-  const [selected, setSelected] = useState(0)
-
-  const getRandomAnecdote = () => {
-    const max = anecdotes.length
-    
-    setSelected(Math.floor(Math.random() * max))
-  }
-
   const anecdotes = [
     'If it hurts, do it more often.',
     'Adding manpower to a late software project makes it later!',
@@ -37,9 +26,20 @@ const App = () => {
     'The only way to go fast, is to go well.'
   ]
 
+  const [selected, setSelected] = useState(0)
+  const votes = new Uint8Array(anecdotes.length)
+
+  const getRandomAnecdote = () => {    
+    setSelected(Math.floor(Math.random() * anecdotes.length))
+  }
+
+
+
   return (
     <>
-      <p>{anecdotes[selected]}</p>
+      <Display anecdote={anecdotes[selected]} />
+      
+      <Button onClick={getRandomAnecdote} text='Vote' />{' '}
       <Button onClick={getRandomAnecdote} text='Next Anecdote' />
     </>
   )

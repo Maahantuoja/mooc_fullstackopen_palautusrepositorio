@@ -2,6 +2,10 @@
 // Tehtävät 1.12 - 1.14
 import { useState } from 'react'
 
+const Header = ({ text }) => (
+  <h1>{text}</h1>
+)
+
 const Button = ({ onClick, text }) => (
   <button onClick={onClick}>
     {text}
@@ -31,23 +35,33 @@ const App = () => {
 
   const [selected, setSelected] = useState(0)
   const [votes, setNewVote] = useState(new Uint8Array(anecdotes.length))
+  const [mostVotes, setMostVotes] = useState(0)
 
   const getRandomAnecdote = () => {    
     setSelected(Math.floor(Math.random() * anecdotes.length))
   }
 
   const handleVotes = () => {
-    const newVote = [...votes]
-    newVote[selected] += 1
-    setNewVote(newVote)
+    const newVotes = [...votes]
+    newVotes[selected] += 1
+    setNewVote(newVotes)
+    setMostVotes(Math.max(...newVotes))
   }
+
+  // const mostVotes = () => {
+  //   const votes = [...votes]
+  // }
 
   return (
     <>
+      <Header text={'Anecdote of the day'} />
       <Display anecdote={anecdotes[selected]} votes={votes[selected]} />
-      {/* <Display votes={votes[selected]} /> */}
+
       <Button onClick={handleVotes} text='Vote' />{' '}
       <Button onClick={getRandomAnecdote} text='Next Anecdote' />
+
+      <Header text={'Anecdote with most votes'} />
+      {console.log(mostVotes)}
     </>
   )
 }

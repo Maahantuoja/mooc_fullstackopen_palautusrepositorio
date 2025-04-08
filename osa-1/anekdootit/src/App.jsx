@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 // Tehtävät 1.12 - 1.14
 import { useState } from 'react'
 
@@ -34,6 +33,9 @@ const App = () => {
   const [selected, setSelected] = useState(0)
   const [votes, setNewVote] = useState(Array(anecdotes.length).fill(0))
 
+  const maxVotes = Math.max(...votes)
+  const mostVotesIndex = votes.indexOf(maxVotes)
+
   const getRandomAnecdote = () => {
     setSelected(Math.floor(Math.random() * anecdotes.length))
   }
@@ -43,9 +45,6 @@ const App = () => {
     newVotes[selected] += 1
     setNewVote(newVotes)
   }
-
-  const maxVotes = Math.max(...votes)
-  const mostVotesIndex = votes.indexOf(maxVotes)
 
   return (
     <>

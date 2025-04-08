@@ -2,9 +2,7 @@
 // Tehtävät 1.12 - 1.14
 import { useState } from 'react'
 
-const Header = ({ text }) => (
-  <h1>{text}</h1>
-)
+const Header = ({ text }) => <h1>{text}</h1>
 
 const Button = ({ onClick, text }) => (
   <button onClick={onClick}>
@@ -12,7 +10,7 @@ const Button = ({ onClick, text }) => (
   </button>
 )
 
-const Display = ({ anecdote, votes}) => {
+const AnecdoteDisplay = ({ anecdote, votes }) => {
   return (
     <p>
       {anecdote}<br />
@@ -34,10 +32,9 @@ const App = () => {
   ]
 
   const [selected, setSelected] = useState(0)
-  const [votes, setNewVote] = useState(new Uint8Array(anecdotes.length))
-  const [mostVotes, setMostVotes] = useState(0)
+  const [votes, setNewVote] = useState(Array(anecdotes.length).fill(0))
 
-  const getRandomAnecdote = () => {    
+  const getRandomAnecdote = () => {
     setSelected(Math.floor(Math.random() * anecdotes.length))
   }
 
@@ -45,23 +42,21 @@ const App = () => {
     const newVotes = [...votes]
     newVotes[selected] += 1
     setNewVote(newVotes)
-    setMostVotes(Math.max(...newVotes))
   }
 
-  // const mostVotes = () => {
-  //   const votes = [...votes]
-  // }
+  const maxVotes = Math.max(...votes)
+  const mostVotesIndex = votes.indexOf(maxVotes)
 
   return (
     <>
       <Header text={'Anecdote of the day'} />
-      <Display anecdote={anecdotes[selected]} votes={votes[selected]} />
+      <AnecdoteDisplay anecdote={anecdotes[selected]} votes={votes[selected]} />
 
       <Button onClick={handleVotes} text='Vote' />{' '}
       <Button onClick={getRandomAnecdote} text='Next Anecdote' />
 
       <Header text={'Anecdote with most votes'} />
-      {console.log(mostVotes)}
+      <AnecdoteDisplay anecdote={anecdotes[mostVotesIndex]} votes={votes[mostVotesIndex]} />
     </>
   )
 }
